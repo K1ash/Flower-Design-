@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дипломний сайт</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Open+Sans&family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+  <header>
+    <div class="conthead">
+
+
+      
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png"></a>
+      </div>
+  
+      <div class="mobile-menu">
+        <div class="menu-icon">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="menu-items">
+          <li> <a href="index.html #katalog">Каталог</a></li>
+          <li> <a href="index.html #pronas1">Про Нас</a></li>
+          <li> <a href="byket.html">Збери Букет</a></li>
+          <li> <a href="contact.html">Контакти</a></li>
+        </div>
+      </div>
+
+
+  
+      
+    </div>
+</div>
+</header>
+
+
+
+<div class="sborbyket">
+
+  <div class="buy-flowers1">
+<h2 id="h222">Квіти які обранні</h2>
+
+<div class="cart" id="cartContainer">
+  <!-- Сюди додаватимуться вибрані елементи -->
+  <button onclick="placeOrder()" id="butf">Замовити</button>
+  <div id="cartItemsContainer">
+   <!-- Тут буде відображатися вміст кошика -->
+      <p>Корзина порожня</p>
+  </div>
+</div>
+
+ </div>
+
+ <img src="images/img_4122-scaled.jpg" width="600px" height="900px" id="imgbyket">
+
+
+<div class="buy-flowers">
+  <h2 id="h222">Добавити квіти</h2>
+
+  <div id="flowersContainer">
+    
+</div>
+</div>
+</div>
+
+
+
+
+
+<footer>
+  <center>
+  <img src="images/logo.png" id="logofot" width="136px" height="55px">
+  </center>
+  
+  <div class="fot1">
+  
+  <div class="contfot">
+    <h2><a href="#">Контакти</a></h2>
+    <p><a href="#">(095) 000 00 00</a></p>
+      <p><a href="#">(097) 000 00 00</a></p>
+      <p><a href="#">Ми працюємо цілодобово</a></p>
+  </div>
+  
+  <div class="contfot">
+    <h2><a href="#">Інформація</a></h2>
+    <p><a href="#">Про нас</a></p>
+    <p><a href="#">Хіт продажу</a></p>
+    <p><a href="#">Відгуки</a></p>
+    <p><a href="#">Доставка і оплата</a></p>
+  </div>
+  
+  <div class="contfot">
+    <h2><a href="#">Каталог</a></h2>
+    <p><a href="#">Збери свій букет</a></p>
+    <p><a href="#">Живі квіти</a></p>
+    <p><a href="#">Кімнатні рослини</a></p>
+  </div>
+  
+  <div class="contfot">
+  <div class="input-group">
+  <input type="email" class="input" id="Email" name="Email" placeholder="poshta@gmail.com" autocomplete="off">
+  <input class="button--submit" value="Підписатися" type="submit">
+  </div>
+          <a href="https://www.instagram.com/"><img src="images/inst.png"  class="right-image" ></a>
+          <a href="https://uk-ua.facebook.com/"><img src="images/fb.png"  class="right-image" ></a>
+          <a href="https://www.viber.com/"><img src="images/viber.png"  class="right-image" ></a>
+  
+  
+          <div class="pfot">
+            <p>Copyright Ⓒ 2024</p>
+            </div>
+            
+            
+  </div>
+  
+  
+  
+  </div>
+  
+  <div class="pfot1">
+    <p>Copyright Ⓒ 2024</p>
+    </div>
+  
+    <center>
+      <img src="images/logo.png" id="logofot1" width="136px" height="55px">
+      </center>
+  
+  </footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="js/js.js"></script>
+<script src="js/scripts.js"></script>
+<script type="text/javascript">
+  document.querySelector('.menu-icon').addEventListener('click', function() {
+  document.querySelector('.menu-items').classList.toggle('show');
+});
+</script> 
+<script src="js/byket.js"></script>
+</body>
+</html>

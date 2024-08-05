@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дипломний сайт</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Open+Sans&family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+    
+  <header>
+    <div class="conthead">
+
+
+      
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png"></a>
+      </div>
+  
+      <div class="mobile-menu">
+        <div class="menu-icon">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="menu-items">
+          <li> <a href="#katalog">Каталог</a></li>
+          <li> <a href="#pronas1">Про Нас</a></li>
+          <li> <a href="byket.html">Збери Букет</a></li>
+          <li> <a href="contact.html">Контакти</a></li>
+          
+        </div>
+        
+      </div>
+
+
+  
+      <div id="images">
+        <img id="cart-image" src="images/basket.png" class="cart-icon" onclick="toggleCartMenu()">
+        <span id="cart-count" class="cart-count">0</span>
+
+        <div id="cart-menu" class="cart-menu">
+            
+                <h2>Кошик</h2>
+                <center>
+                <button onclick="toggleCartMenu()" class="buttog">X</button>
+           
+           
+            <div id="cart-container"></div>
+            <div id="total-container"></div>
+           
+                <button id="order-button">Замовити</button>
+            </center>
+        </div>
+    </div>
+</div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+    <div class="containersec1">
+        
+      <img src="images/bg_mob-no-background.png" id="img1">
+     
+      <div class="containersec12">
+    <div class="text-containersec1">
+        <p class="p13">Букет із кущових троянд "Довгоочікуване щастя"</p>
+        <p>Ніжний та витончений шик у букеті з - троянд гарний вибір для коханої людини</p>
+    <div class="button-containersec1">
+       
+        <button class="btn"> <a href="#vidg"> В Відгуки </a> </button>
+        <button class="btn"> <a href="#katalog"> В Каталог</a></button>
+
+    </div> 
+        </div>
+</div>
+        <img src="images/bg_web-no-background.png" id="img2">
+    </div>
+</div>
+</section>
+
+<section class="con2">
+
+    <div class="containersec2" >
+      
+    <div class="image-container">
+
+        <div class="image-wrapper">
+          <img src="images/bouquets.jpg">
+          <button><a href="#">Букети</a></button>
+        </div>
+        <div class="image-wrapper">
+          <img src="images/natural_flowers.jpg">
+          <button><a href="#">Живі Квіти</a></button>
+        </div>
+        <div class="image-wrapper">
+          <img src="images/own_bouquet.png" >
+          <button><a href="#">"Свій" букет</a></button>
+        </div>
+
+      </div>
+    <div class="containersec21">
+        <div class="text-containersec21">
+
+<h2 id="pronas1">Про нас</h2>
+
+<p>Яких квітів тут лише немає! І садові, і польові, і кімнатні у глиняних горщиках. Очі розбігаються від такого достатку.</p>
+<p>Тут представлена і багата колекція кімнатних рослин: кактуси різної форми та величини, ніжні фіалки, усипані квітами, аспарагуси, фікуси.</p>
+
+
+
+</div>
+<div class="container33" style="background: url('images/abstract_background.png') center center/cover no-repeat;">
+    <img src="images/women.png" alt="Картинка слева" class="left-image">
+    <div class="right-images">
+        <a href="https://www.instagram.com/"><img src="images/inst.png"  class="right-image" ></a>
+        <a href="https://uk-ua.facebook.com/"><img src="images/fb.png"  class="right-image" ></a>
+        <a href="https://www.viber.com/"><img src="images/viber.png"  class="right-image" ></a>
+    </div>
+
+</div>
+</div>
+</div>
+
+
+ <div class="bottom-block">
+    <h2>Працюємо для вас</h2>
+   <div class="imagessec3">
+
+    <div class="imgpblock">
+  <img src="images/constructor.png">
+  <p>Конструктрор унікального букета</p>
+  </div>
+
+  <div class="imgpblock">
+  <img src="images/delivery.png">
+  <p>Безкоштовна доставка по місту </p>
+</div>
+
+  <div class="imgpblock">
+  <img src="images/indoor.png">
+  <p>Наявність кімнатних рослин</p>
+  </div>
+
+  <div class="imgpblock">
+  <img src="images/for_loved_ones.png">
+  <p>Вибір квітів для близьких</p>
+   </div>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="sec4">
+  <h2 id="katalog">Каталог</h2>
+
+
+  <div id="toast" class="toast hide">
+      <span id="added-item-name"></span> додано до корзини
+  </div>
+
+  <div id="flower-container">
+      <div id="flowerCards" class="flower-cards-container">
+         
+      </div>
+
+      <center>
+          <div class="pagination-container">
+              <button id="prev-page-btn" class="pagination-btn"><img src="images/Arrow 3.png"></button>
+              <div id="pagination-indicators" class="pagination-indicators"></div>
+              <button id="next-page-btn" class="pagination-btn"><img src="images/Arrow 1.png"></button>
+          </div>
+      </center>
+  </div>
+</section>
+
+
+
+
+<section class="sec5">
+<div class="h22"><h2 id="vidg">Відгуки</h2></div>
+
+
+<div class="container1">
+  <div class="row">
+      <div class="col-lg-12">
+      </div>
+      <div class="col-lg-6">
+          <div id="comment-field"></div>
+          <div class="pagination-arrows">
+
+              <button class="btn-secondary" id="prev-page1"><img src="images/icons8-left-50.png"></button>
+              <span id="current-page">Страница 1</span>
+              <button class="btn-secondary" id="next-page1"><img src="images/icons8-right-50.png"></button>
+
+          </div>
+      </div>
+      <div class="col-lg-6">
+    <div class="formcont">
+
+         <h2>Додати відгук:</h2> 
+
+
+          <form>
+              <div class="contform">
+              <div class="form-group">
+                  <label for="comment-name"></label>
+                  <input type="text" class="form-control" id="comment-name" placeholder=" Ваше ім'я:">
+              </div>
+              <div class="form11">
+              <div class="form-group">
+                  <label for="comment-body"></label>
+                  <input type="text" class="form-control" id="comment-body" placeholder=" Ваш відгук:"></input>
+              </div>
+              </div>
+             
+              <div class="form-group form-check text-right">
+                  <button type="button" id="comment-add" class="btn btn-primary">Відправити</button>
+              </div>
+          </div>
+          </form>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<section class="sec6">
+<h2>Доставка і оплата</h2>
+
+
+
+
+<div class="circle1-container">
+
+<div class="circle-container">
+  <div class="circle">1</div>
+  <div class="circle-container-text"><p>Ви замовляєте букет через
+    каталог</p></div>
+</div>
+
+<div class="circle-container">
+  <div class="circle">2</div>
+  <div class="circle-container-text"><p>Ви оплачуєте товар через картку VISA або MC, або 
+    Приват24</p></div>
+</div>
+
+<div class="circle-container">
+  <div class="circle">3</div>
+  <div class="circle-container-text"><p>Вам передзвонять наші менеджери, якщо потрібно щось уточнити</p></div>
+</div>
+
+<div class="circle-container">
+  <div class="circle">4</div>
+  <div class="circle-container-text"><p>Надсилаємо фото зібраного букета, щоб узгодити
+    все</p></div>
+</div>
+
+<div class="circle-container">
+  <div class="circle">5</div>
+  <div class="circle-container-text"><p>Доставляємо букет
+    одержувачу протягом 2-х годин</p>
+    </div>
+</div>
+
+<div class="circle-container">
+  <div class="circle">6</div>
+  <div class="circle-container-text"><p>Сповістимо Вас дзвінком або повідомленням про доставку букета</p></div>
+</div>
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<footer>
+<center>
+<img src="images/logo.png" id="logofot" width="136px" height="55px">
+</center>
+
+<div class="fot1">
+
+<div class="contfot">
+  <h2><a href="#">Контакти</a></h2>
+  <p><a href="#">(095) 000 00 00</a></p>
+    <p><a href="#">(097) 000 00 00</a></p>
+    <p><a href="#">Ми працюємо цілодобово</a></p>
+</div>
+
+<div class="contfot">
+  <h2><a href="#">Інформація</a></h2>
+  <p><a href="#">Про нас</a></p>
+  <p><a href="#">Хіт продажу</a></p>
+  <p><a href="#">Відгуки</a></p>
+  <p><a href="#">Доставка і оплата</a></p>
+</div>
+
+<div class="contfot">
+  <h2><a href="#">Каталог</a></h2>
+  <p><a href="#">Збери свій букет</a></p>
+  <p><a href="#">Живі квіти</a></p>
+  <p><a href="#">Кімнатні рослини</a></p>
+</div>
+
+<div class="contfot">
+<div class="input-group">
+<input type="email" class="input" id="Email" name="Email" placeholder="poshta@gmail.com" autocomplete="off">
+<input class="button--submit" value="Підписатися" type="submit">
+</div>
+        <a href="https://www.instagram.com/"><img src="images/inst.png"  class="right-image" ></a>
+        <a href="https://uk-ua.facebook.com/"><img src="images/fb.png"  class="right-image" ></a>
+        <a href="https://www.viber.com/"><img src="images/viber.png"  class="right-image" ></a>
+
+
+        <div class="pfot">
+          <p>Copyright Ⓒ 2024</p>
+          </div>
+          
+          
+</div>
+
+
+
+</div>
+
+<div class="pfot1">
+  <p>Copyright Ⓒ 2024</p>
+  </div>
+
+  <center>
+    <img src="images/logo.png" id="logofot1" width="136px" height="55px">
+    </center>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="js/js.js"></script>
+<script src="js/scripts.js"></script>
+<script type="text/javascript">
+  document.querySelector('.menu-icon').addEventListener('click', function() {
+  document.querySelector('.menu-items').classList.toggle('show');
+});
+</script> 
+
+</body>
+</html>

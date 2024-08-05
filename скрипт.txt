@@ -1,0 +1,107 @@
+const commentsPerPage = 2;
+    let currentPage = 1;
+    let comments = [];
+
+    function loadComments() {
+        if (localStorage.getItem('comments')) comments = JSON.parse(localStorage.getItem('comments'));
+        showComments();
+    }
+
+    function saveComments() {
+        localStorage.setItem('comments', JSON.stringify(comments));
+    }
+
+    function showComments() {
+        let commentField = document.getElementById('comment-field');
+        let out = '';
+        const startIndex = (currentPage - 1) * commentsPerPage;
+        const endIndex = startIndex + commentsPerPage;
+        const commentsToShow = comments.slice(startIndex, endIndex);
+
+        commentsToShow.forEach(function (item, index) {
+            out += `<div class="comment-container">`;
+            out += `<img src="${item.image}" alt="User Image" class="comment-image">`;
+            out += `<div class="comment-content">`;
+            out += `<p class="alert alert-success" role="alert">${item.body}</p>`;
+            out += `<p class="text-right small"><em>${item.name} - ${timeConverter(item.time)}</em></p>`;
+            out += `<button class="btn btn-danger" onclick="removeComment(${index})">Delete</button>`;
+            out += `</div>`; // Close comment-content div
+            out += `</div>`; // Close comment-container div
+        });
+
+        commentField.innerHTML = out;
+        document.getElementById('current-page').innerText = `Страница ${currentPage}`;
+    }
+
+    document.getElementById('comment-add').onclick = function () {
+        let commentName = document.getElementById('comment-name');
+        let commentBody = document.getElementById('comment-body');
+        let captchaInput = document.getElementById('captcha');
+
+        if (commentName.value.trim().length < 5 || commentBody.value.trim().length < 5) {
+            alert('5 символов впишите');
+            return;
+        }
+
+        if (!validateCaptcha()) {
+            alert('Будь ласка впишіть кодове слово');
+            return;
+        }
+
+        let comment = {
+            name: commentName.value,
+            body: commentBody.value,
+            image: 'path/to/reviews-photo2.png',
+            time: Math.floor(Date.now() / 1000)
+        };
+
+        commentName.value = '';
+        commentBody.value = '';
+        captchaInput.value = '';
+
+        // Используйте unshift, чтобы новые комментарии добавлялись в начало массива
+        comments.unshift(comment);
+        saveComments();
+        showComments();
+    };
+
+    function validateCaptcha() {
+        let captchaInput = document.getElementById('captcha');
+        return captchaInput.value.trim().toLowerCase() === 'flower';
+    }
+
+    function timeConverter(UNIX_timestamp) {
+        var a = new Date(UNIX_timestamp * 1000);
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+        return time;
+    }
+
+    function removeComment(index) {
+        comments.splice(index, 1);
+        saveComments();
+        showComments();
+    }
+
+    document.getElementById('prev-page').onclick = function () {
+        if (currentPage > 1) {
+            currentPage--;
+            showComments();
+        }
+    };
+
+    document.getElementById('next-page').onclick = function () {
+        const maxPages = Math.ceil(comments.length / commentsPerPage);
+        if (currentPage < maxPages) {
+            currentPage++;
+            showComments();
+        }
+    };
+
+    loadComments();

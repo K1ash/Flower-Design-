@@ -1,0 +1,365 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const flowerContainer = document.getElementById('flower-container');
+  const cartContainer = document.getElementById('cart-container');
+  const totalContainer = document.getElementById('total-container');
+  const cartImage = document.getElementById('cart-image');
+  const cartCount = document.getElementById('cart-count'); 
+  const cartMenu = document.getElementById('cart-menu');
+  const orderButton = document.getElementById('order-button');
+  const prevPageBtn = document.getElementById('prev-page-btn');
+  const nextPageBtn = document.getElementById('next-page-btn');
+  const paginationIndicatorsContainer = document.getElementById('pagination-indicators');
+  
+  
+  
+
+
+  
+  const cartItems = [];
+const cardsPerPage = 10; 
+let currentPage = 1;
+
+
+
+
+renderFlowerCards(currentPage);
+renderPaginationIndicators();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// КНОПКИ ДЛЯ КАРТОК
+prevPageBtn.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderFlowerCards(currentPage);
+    renderPaginationIndicators();
+  }
+});
+
+nextPageBtn.addEventListener('click', () => {
+  const totalPages = Math.ceil(flowers.length / cardsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderFlowerCards(currentPage);
+    renderPaginationIndicators();
+  }
+});
+
+
+
+
+// Function to render flower cards for the given page
+function renderFlowerCards(page) {
+const startIdx = (page - 1) * cardsPerPage;
+const endIdx = startIdx + cardsPerPage;
+const currentFlowers = flowers.slice(startIdx, endIdx);
+
+// Clear previous content
+flowerContainer.innerHTML = '';
+
+// Render each flower card
+currentFlowers.forEach((flower) => {
+  const flowerCard = createFlowerCard(flower);
+  flowerContainer.appendChild(flowerCard);
+});
+}
+
+// Function to create a flower card
+function createFlowerCard(flower) {
+}
+
+// Function to add a flower to the cart
+function addToCart(flower, quantity) {
+renderFlowerCards(currentPage);
+}
+
+// Function to update the quantity of a flower in the cart
+function updateCartQuantity(flowerId, change) {
+renderCart(); 
+renderFlowerCards(currentPage); 
+}
+
+
+
+// Function to render pagination indicators
+function renderPaginationIndicators() {
+const totalPages = Math.ceil(flowers.length / cardsPerPage);
+
+// Clear previous content
+paginationIndicatorsContainer.innerHTML = '';
+
+// Render indicators
+for (let i = 1; i <= totalPages; i++) {
+  const indicator = document.createElement('div');
+  indicator.classList.add('pagination-indicator');
+  indicator.addEventListener('click', () => {
+    currentPage = i;
+    renderFlowerCards(currentPage);
+    renderPaginationIndicators();
+  });
+  paginationIndicatorsContainer.appendChild(indicator);
+}
+
+// Highlight the current page indicator
+const indicators = document.querySelectorAll('.pagination-indicator');
+indicators.forEach((indicator, index) => {
+  if (index + 1 === currentPage) {
+    indicator.classList.add('active');
+  } else {
+    indicator.classList.remove('active');
+  }
+});
+}
+
+
+// Function to render flower cards for the given page
+function renderFlowerCards(page) {
+const startIdx = (page - 1) * cardsPerPage;
+const endIdx = startIdx + cardsPerPage;
+const currentFlowers = flowers.slice(startIdx, endIdx);
+
+// Clear previous content
+flowerContainer.innerHTML = '';
+
+// Render each flower card
+currentFlowers.forEach((flower) => {
+  const flowerCard = createFlowerCard(flower);
+  flowerContainer.appendChild(flowerCard);
+});
+}
+// КНОПКИ ДЛЯ КАРТОК
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // СОЗДАНИЕ КАРТОЧКИ КАК ОНА БУДЕТ ВЫГЛЯДИТЬ
+  function createFlowerCard(flower) {
+    const card = document.createElement('div');
+    card.classList.add('flower-card');
+
+    const image = document.createElement('img');
+    image.classList.add('flower-image');
+    image.src = flower.image;
+    image.alt = flower.name;
+
+    const name = document.createElement('h2');
+    name.textContent = flower.name;
+
+    const price = document.createElement('p');
+    price.textContent = `${flower.price.toFixed(2)} грн`;
+
+    const addToCartBtn = document.createElement('button');
+    addToCartBtn.classList.add('add-to-cart-btn');
+    addToCartBtn.textContent = 'В кошик';
+    addToCartBtn.dataset.flowerId = flower.id;
+
+    card.appendChild(image);
+    card.appendChild(name);
+    card.appendChild(price);
+    card.appendChild(addToCartBtn);
+
+    return card;
+  }
+ // СОЗДАНИЕ КАРТОЧКИ КАК ОНА БУДЕТ ВЫГЛЯДИТЬ
+
+
+  // Function to add a flower to the cart
+  function addToCart(flower, quantity) {
+    const existingCartItem = cartItems.find(item => item.flower.id === flower.id);
+    if (existingCartItem) {
+      existingCartItem.quantity += quantity;
+    } else {
+      cartItems.push({ flower, quantity });
+    }
+    renderCart();
+  }
+
+  // Function to update the quantity of a flower in the cart
+  function updateCartQuantity(flowerId, change) {
+    const existingCartItem = cartItems.find(item => item.flower.id === flowerId);
+    if (existingCartItem) {
+      existingCartItem.quantity += change;
+      if (existingCartItem.quantity <= 0) {
+        // Remove the item if the quantity is zero or negative
+        cartItems.splice(cartItems.indexOf(existingCartItem), 1);
+      }
+      renderCart();
+    }
+  }
+
+
+
+  // Function to render the cart
+  function renderCart() {
+    // Clear previous content
+    cartContainer.innerHTML = '';
+
+    // Render each item in the cart
+    cartItems.forEach(item => {
+      const cartItem = document.createElement('div');
+      const cartItemImg = document.createElement('img');
+      cartItemImg.src = item.flower.image;
+      cartItemImg.alt = item.flower.name;
+      cartItem.appendChild(cartItemImg);
+      const cartItemText = document.createElement('span');
+      cartItemText.textContent = `${item.flower.name} x${item.quantity} - $${(item.flower.price * item.quantity).toFixed(2)}`;
+      cartItem.appendChild(cartItemText);
+
+      // Buttons for increasing and decreasing quantity
+      const increaseBtn = document.createElement('button');
+      increaseBtn.classList.add('quantity-increase-btn');
+      increaseBtn.textContent = '+';
+      increaseBtn.dataset.flowerId = item.flower.id;
+      cartItem.appendChild(increaseBtn);
+
+      const decreaseBtn = document.createElement('button');
+      decreaseBtn.classList.add('quantity-decrease-btn');
+      decreaseBtn.textContent = '-';
+      decreaseBtn.dataset.flowerId = item.flower.id;
+      cartItem.appendChild(decreaseBtn);
+
+      cartContainer.appendChild(cartItem);
+    });
+
+    // Update the total
+    updateTotal();
+
+    // Update the cart count
+    updateCartCount();
+  }
+
+  // Function to update the total
+  function updateTotal() {
+    const total = cartItems.reduce((acc, item) => acc + item.flower.price * item.quantity, 0);
+    totalContainer.textContent = `Всього: $${total.toFixed(2)}`;
+  }
+
+  // Function to update the cart count
+  function updateCartCount() {
+    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    cartCount.textContent = count.toString();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// КОШИК
+// Подія для кнопки «Додати в кошик». 1.
+flowerContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('add-to-cart-btn')) {
+    const flowerId = parseInt(event.target.dataset.flowerId, 10);
+    const selectedFlower = flowers.find((flower) => flower.id === flowerId);
+    addToCart(selectedFlower, 1); // Default quantity is 1
+  }
+});
+
+// Подія для зображення кошика 1.1
+cartImage.addEventListener('click', () => {
+  toggleCartMenu();
+});
+
+// ФУНК для кнопки замовлення 1.2
+orderButton.addEventListener('click', () => {
+  alert('Order placed!'); 
+  clearCart();
+});
+
+// В кошику кнопки +/- 1.3
+cartContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('quantity-increase-btn')) {
+    const flowerId = parseInt(event.target.dataset.flowerId, 10);
+    updateCartQuantity(flowerId, 1);
+  } else if (event.target.classList.contains('quantity-decrease-btn')) {
+    const flowerId = parseInt(event.target.dataset.flowerId, 10);
+    updateCartQuantity(flowerId, -1);
+  }
+});
+
+ // ФУНКЦИЯ НОУ СКРОЛИНГ
+ function toggleCartMenu() {
+  document.body.classList.add('no-scroll');
+  renderCart(); // Ensure cart is up to date when the menu is shown
+  cartMenu.classList.toggle('show');
+}
+
+  // Function to clear the cart
+  function clearCart() {
+    cartItems.length = 0;
+    renderCart();
+  }
+});
+
+function toggleCartMenu() {
+  var cartMenu = document.getElementById("cart-menu");
+  var body = document.body;
+
+  if (cartMenu.style.display === "none" || cartMenu.style.display === "") {
+      cartMenu.style.display = "block";
+      body.classList.add("no-scroll"); // Добавляем класс для блокировки скроллинга
+  } else {
+      cartMenu.style.display = "none";
+      body.classList.remove("no-scroll"); // Удаляем класс, чтобы разблокировать скроллинг
+  }
+}
+// ФУНКЦИЯ НОУ СКРОЛИНГ
+// КОШИК
+
+document.getElementById("order-button").addEventListener("click", function() {
+  // ПЕРЕХОД ПО КНОПКИ НА СТРАНИЦУ
+  window.location.href = "form.html";
+});
+
